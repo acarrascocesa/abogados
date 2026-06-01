@@ -364,6 +364,20 @@ a {
   cursor: pointer;
   font-size: 1.5rem;
   z-index: 1010;
+  transition: var(--transition-bezier);
+}
+
+/* Color responsivo dinámico del menú hamburguesa */
+.header:not(.scrolled) .mobile-nav-toggle {
+  color: #ffffff; /* Blanco cuando está sobre el Hero oscuro */
+}
+
+.header:not(.scrolled) .mobile-nav-toggle[aria-expanded="true"] {
+  color: var(--text-light); /* Oscuro cuando el menú claro está abierto */
+}
+
+.header.scrolled .mobile-nav-toggle {
+  color: var(--text-light); /* Oscuro cuando el navbar ya tiene fondo blanco */
 }
 
 /* ==========================================================================
@@ -1485,30 +1499,75 @@ textarea.form-control {
   section {
     padding: 60px 0;
   }
+  /* Header siempre consolidado y claro en móviles para garantizar legibilidad */
+  .header {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: var(--glass-blur) !important;
+    -webkit-backdrop-filter: var(--glass-blur) !important;
+    height: 70px !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
+  }
+  .header .logo-img {
+    height: 40px !important;
+    filter: invert(1) brightness(0.1) !important;
+  }
+  .header .mobile-nav-toggle {
+    color: var(--text-light) !important;
+  }
+
   .hero {
-    min-height: 60vh; /* Altura optimizada para disminuir el zoom vertical y ensanchar la vista horizontal */
-    padding: 90px 0 30px 0;
-    background-image: url('assets/images/hero-mobile.jpg'); /* Imagen local súper ligera y optimizada */
-    background-position: 39% 0%; /* Foco horizontal desplazado al 39% para centrar de forma exacta a los 3 abogados y mantenerlos completamente visibles */
-    background-size: cover;
+    min-height: 380px !important; /* Altura más alta solicitada por el usuario */
+    aspect-ratio: auto !important; /* Desactivar proporción forzada para usar altura mínima */
+    margin-top: 70px !important; /* Comienza exactamente debajo del header móvil */
+    padding: 0 !important;
+    background-image: url('assets/images/hero-mobile.jpg') !important;
+    background-size: 100% auto !important; /* Imagen 100% completa horizontally y proporcional */
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    background-color: #07080a !important; /* Fondo oscuro a juego con las sombras de la foto original */
   }
   .hero-overlay {
-    /* Un degradado vertical más denso en la base inferior en móviles para garantizar legibilidad */
-    background: linear-gradient(to top, rgba(7, 8, 10, 0.98) 0%, rgba(144, 26, 32, 0.5) 60%, rgba(18, 21, 28, 0.3) 100%);
+    background: linear-gradient(to top, rgba(7, 8, 10, 0.95) 0%, rgba(144, 26, 32, 0.3) 60%, rgba(18, 21, 28, 0.05) 100%);
   }
   .hero .container {
-    padding-bottom: 24px; /* Menor holgura en pantallas móviles */
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    padding-bottom: 24px !important; /* Textos ubicados con holgura elegante sobre el fondo integrado */
   }
-  .section-title {
-    font-size: 2.2rem;
+  .hero-content {
+    max-width: 92% !important;
+  }
+  .hero-tag {
+    font-size: 0.70rem !important;
+    margin-bottom: 4px !important;
   }
   .hero-title {
-    font-size: 2.20rem; /* Tamaño refinado para celulares para evitar saltos de línea bruscos */
-    margin-bottom: 16px;
+    font-size: 1.65rem !important; /* Aumentado por mayor disponibilidad de espacio */
+    margin-bottom: 10px !important;
+  }
+  .hero-title span::after {
+    height: 2px !important;
+    bottom: -2px !important;
+    width: 50px !important;
   }
   .hero-description {
-    font-size: 0.95rem; /* Ajustado para mejor legibilidad y economía de espacio vertical */
-    margin-bottom: 24px;
+    display: block !important; /* Restaurado en móvil con tipografía compacta y de alta gama */
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    max-width: 90% !important;
+    margin: 0 auto 16px auto !important;
+  }
+  .hero-actions {
+    gap: 8px !important;
+  }
+  .hero-actions .btn {
+    padding: 10px 20px !important;
+    font-size: 0.85rem !important;
+    gap: 6px !important;
   }
   .quote-text {
     font-size: 1.35rem;
