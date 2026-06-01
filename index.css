@@ -376,8 +376,8 @@ a {
   padding-top: var(--nav-height);
   position: relative;
   overflow: hidden;
-  /* Imagen original solicitada por el usuario */
-  background-image: url('https://logisticalegal.com.do/wp-content/uploads/2024/07/Slide-home-2.jpg');
+  /* Imagen optimizada local para pantallas de escritorio */
+  background-image: url('assets/images/hero-desktop.jpg');
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
@@ -1448,16 +1448,13 @@ textarea.form-control {
     padding: 80px 0;
   }
   .hero {
-    min-height: auto;
-    padding: 140px 0 100px 0;
+    min-height: 70vh; /* Altura controlada para tablets */
+    padding: 120px 0 60px 0;
+    background-position: center 15%; /* Desplaza el foco vertical hacia arriba */
+    background-size: cover;
   }
   .hero .container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  .hero-glass-container {
-    max-width: 100%;
-    padding: 40px;
+    padding-bottom: 50px;
   }
   .about-grid {
     grid-template-columns: 1fr;
@@ -1488,14 +1485,30 @@ textarea.form-control {
   section {
     padding: 60px 0;
   }
+  .hero {
+    min-height: 60vh; /* Altura optimizada para disminuir el zoom vertical y ensanchar la vista horizontal */
+    padding: 90px 0 30px 0;
+    background-image: url('assets/images/hero-mobile.jpg'); /* Imagen local súper ligera y optimizada */
+    background-position: 39% 0%; /* Foco horizontal desplazado al 39% para centrar de forma exacta a los 3 abogados y mantenerlos completamente visibles */
+    background-size: cover;
+  }
+  .hero-overlay {
+    /* Un degradado vertical más denso en la base inferior en móviles para garantizar legibilidad */
+    background: linear-gradient(to top, rgba(7, 8, 10, 0.98) 0%, rgba(144, 26, 32, 0.5) 60%, rgba(18, 21, 28, 0.3) 100%);
+  }
+  .hero .container {
+    padding-bottom: 24px; /* Menor holgura en pantallas móviles */
+  }
   .section-title {
     font-size: 2.2rem;
   }
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2.20rem; /* Tamaño refinado para celulares para evitar saltos de línea bruscos */
+    margin-bottom: 16px;
   }
   .hero-description {
-    font-size: 1rem;
+    font-size: 0.95rem; /* Ajustado para mejor legibilidad y economía de espacio vertical */
+    margin-bottom: 24px;
   }
   .quote-text {
     font-size: 1.35rem;
